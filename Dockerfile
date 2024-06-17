@@ -1,4 +1,4 @@
-ARG GOLANG_VERSION=1.22.1
+ARG GOLANG_VERSION=1.22.4
 ARG ALPINE_VERSION=3.19
 
 FROM golang:${GOLANG_VERSION}-alpine${ALPINE_VERSION} as gobuild
@@ -10,7 +10,7 @@ WORKDIR /go/src/github.com/caddyserver/xcaddy/cmd/xcaddy
 RUN apk add --no-cache git gcc build-base; \
 	go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
 
-ADD https://github.com/acouvreur/sablier.git#v1.6.1 /sablier
+ADD https://github.com/acouvreur/sablier.git#v1.7.0 /sablier
 
 RUN  xcaddy build \
 	 --output /go/src/github.com/caddyserver/xcaddy/cmd/caddy \
